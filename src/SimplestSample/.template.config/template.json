@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Édgar Sánchez Gordón",
+    "classifications": [ "F#", "Web App", "Giraffe" ],
+    "identity": "LogicStudio.GiraffeSimpleService",
+    "name": "Logic Studio: GiraffeSimpleService",
+    "shortName": "GiraffeSimple",
+    "sourceName": "SimplestSample",
+    "preferNameDirectory": true,
+    "tags": {
+      "language": "F#",
+      "type": "project"
+    }
+  }
