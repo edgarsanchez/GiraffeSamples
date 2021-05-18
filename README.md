@@ -17,6 +17,6 @@ This repository contains (almost) ready to run samples of Web services using the
 In the future we will adding other examples, some ideas:
 1. CRUD services with MongoDB
 2. CRUD services with Entity Framework
-3. Using OAuth tokens for call 
+3. Using OAuth tokens for call authorization
 
 Suggestions and comments most welcomed!
