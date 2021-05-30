@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.78" />
-    <PackageReference Include="Giraffe" Version="4.1.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="Giraffe" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.3" />
   </ItemGroup>
 
 </Project>

@@ -3,31 +3,34 @@ open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Giraffe
+open Giraffe.EndpointRouting
 
 type Country = { Id: int; Name: string; Gini: float }
 
-let webApp =
-    choose [
-        route "/ping"   >=> text "pong"
-        route "/ec"     >=> json { Id = 593; Name = "Ecuador"; Gini = 45.4 }
+let endpoints = [
+        GET [
+            route "/ping" (text "pong")
+            route "/ec" (json { Id = 593; Name = "Ecuador"; Gini = 45.4 })
+        ]
     ]
 
-let configureApp (app: IApplicationBuilder) =
-    app.UseGiraffe webApp
+let configureApp (appBuilder: IApplicationBuilder) =
+    // UseRouting() because we are using Giraffe over the ASP.NET Core routing engine
+    // UseGiraffe(endpoints) makes Giraffe expose the HTTP end points defined by endpoints
+    appBuilder.UseRouting().UseGiraffe(endpoints) |> ignore
 
 let configureServices (services: IServiceCollection) =
-    services.AddGiraffe() |> ignore
+    // AddRouting() enables ASP.NET Core routing
+    // AddGiraffe() enables Giraffe on top of ASP.NET Core routing
+    services.AddRouting().AddGiraffe() |> ignore
 
 [<EntryPoint>]
-let main _ =
+let main args =
     Host
-        .CreateDefaultBuilder()
-        .ConfigureWebHostDefaults(
-            fun hostBuilder ->
-                hostBuilder
-                    .Configure(configureApp)
-                    .ConfigureServices(configureServices)
-                |> ignore )
+        .CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults( fun hostBuilder ->
+            hostBuilder.Configure(configureApp).ConfigureServices(configureServices)
+            |> ignore )
         .Build()
         .Run()
 

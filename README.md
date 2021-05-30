@@ -19,4 +19,6 @@ In the future we will adding other examples, some ideas:
 2. CRUD services with Entity Framework
 3. Using OAuth tokens for call authorization
 
+We are now using Giraffe 5.0, based on ASP.NET Core routing.
+
 Suggestions and comments most welcomed!
